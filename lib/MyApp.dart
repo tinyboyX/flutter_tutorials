@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 //You can define your own Widget
 class MyApp extends StatefulWidget {
@@ -51,7 +48,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                       controller: _contentController,
                       onChanged: (text) {
                         setState(() {
-                          _content = text;
+                          _content = text ?? null;
                         });
                       },
                     ),
@@ -65,6 +62,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                         });
                       },
                     ),
+                    // ignore: deprecated_member_use
                     FlatButton(
                       child: Text('Insert Transaction'),
                       color: Colors.pinkAccent,
@@ -72,6 +70,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                       onPressed: () {
                         //print('Content = $_content, money\'s amount = $_amount');
                         //Display to UI ?
+                        //ignore: deprecated_member_use
                         _scaffoldKey.currentState.showSnackBar(SnackBar(
                           content: Text(
                               'Content = $_content, money\'s amount = $_amount'),
