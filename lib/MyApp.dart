@@ -98,16 +98,16 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                           },
                         )),
                     Column(
-                      children: <Widget>[
-                        ListTile(
-                          leading: const Icon(Icons.airline_seat_flat_sharp),
-                          title: const Text("Test"),
-                          subtitle: const Text("data"),
-                          onTap: () {
-                            print("Taped");
+                      children: _transactions.map((eachTransaction){
+                        return ListTile(
+                          leading: const Icon(Icons.access_alarm),
+                          title: Text(eachTransaction.content),
+                          subtitle: Text('Price: ${eachTransaction.amount}'),
+                          onTap: (){
+                            print('You clicked: ${eachTransaction.content}');
                           },
-                        )
-                      ],
+                        );
+                      }).toList(),
                     )
                   ],
                 ))));
