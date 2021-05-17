@@ -4,6 +4,7 @@ import 'category_item.dart';
 import 'fake_data.dart';
 
 class CategoriesPage extends StatelessWidget {
+  static const String routeName = '/CategoryPage';
   @override
   Widget build(BuildContext context) {
     return GridView(
@@ -13,7 +14,7 @@ class CategoriesPage extends StatelessWidget {
           .toList(),
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 300,
-          childAspectRatio: 3 / 2,
+          childAspectRatio: 3 / 3 ,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10),
     );
