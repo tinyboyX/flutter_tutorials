@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'transaction.dart';
+import 'TransactionList.dart';
 
 //You can define your own Widget
 class MyApp extends StatefulWidget {
@@ -41,9 +41,32 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     return MaterialApp(
         title: "This is a StatefulWidget",
         home: Scaffold(
+            appBar: AppBar(
+              title: Text("Transaction Money"),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () {
+                    setState(() {
+                      this._insertTransactions();
+                    });
+                  },
+                )
+              ],
+            ),
+            floatingActionButton: FloatingActionButton(
+              tooltip: "Add Transaction",
+              child: Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                  this._insertTransactions();
+                });
+              },
+            ),
             key: _scaffoldKey,
             body: SafeArea(
-                minimum: const EdgeInsets.only(left: 20, right: 20),
+              minimum: const EdgeInsets.only(left: 20, right: 20),
+              child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
@@ -75,41 +98,37 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                         child: FlatButton(
                           child: Text(
                             'Insert Transaction',
-                            style: const TextStyle(fontSize: 18),
+                            style: const TextStyle(fontSize: 20),
                           ),
                           color: Colors.pinkAccent,
                           textColor: Colors.white,
                           onPressed: () {
                             setState(() {
-                              _transactions.add(_transaction);
-                              // clear content in text field
-                              _transaction = Transaction('', 0.0);
-                              _contentController.text = '';
-                              _amountController.text = '';
+                              this._insertTransactions();
                             });
                             //print('Content = $_content, money\'s amount = $_amount');
                             // Display list
                             //ignore: deprecated_member_use
-                            _scaffoldKey.currentState.showSnackBar(SnackBar(
-                              content: Text('Transaction List :' +
-                                  _transactions.toString()),
-                              duration: Duration(seconds: 3),
-                            ));
                           },
                         )),
-                    Column(
-                      children: _transactions.map((eachTransaction){
-                        return ListTile(
-                          leading: const Icon(Icons.access_alarm),
-                          title: Text(eachTransaction.content),
-                          subtitle: Text('Price: ${eachTransaction.amount}'),
-                          onTap: (){
-                            print('You clicked: ${eachTransaction.content}');
-                          },
-                        );
-                      }).toList(),
-                    )
+                    TransactionList(_transactions)
                   ],
-                ))));
+                ),
+              ),
+            )));
+  }
+
+  void _insertTransactions() {
+    if (_transaction.content.isEmpty ||
+        _transaction.amount == 0.0 ||
+        _transaction.amount.isNaN) {
+      print(" Your input is not valid");
+      return;
+    }
+    _transactions.add(_transaction);
+    // clear content in text field
+    _transaction = Transaction('', 0.0);
+    _contentController.text = '';
+    _amountController.text = '';
   }
 }
