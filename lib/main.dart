@@ -9,10 +9,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Food App with Navigation',
-      theme: ThemeData(primarySwatch: Colors.cyan),
+      theme: ThemeData(primarySwatch: Colors.purple),
       home: Scaffold(
           appBar: AppBar(
-//          centerTitle: false,
+            centerTitle: false,
             title: const Text('Food\'s categories'),
           ),
           body: SafeArea(
