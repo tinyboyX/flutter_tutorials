@@ -7,6 +7,7 @@ class CategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView(
+      padding: EdgeInsets.all(20),
       children: FAKE_CATEGORIES
           .map((eachCategory) => CategoryItem(category: eachCategory))
           .toList(),
