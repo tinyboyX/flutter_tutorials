@@ -109,7 +109,7 @@ class FoodsPage extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => DetailFoodPage()));
+                      builder: (context) => DetailFoodPage(food: food)));
                 },
               );
             }),
