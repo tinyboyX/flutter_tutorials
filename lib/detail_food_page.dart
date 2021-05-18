@@ -19,21 +19,33 @@ class DetailFoodPage extends StatelessWidget {
             child: FadeInImage.assetNetwork(
                 placeholder: 'assert/images/loading.gif', image: food.urlImage),
           ),
-          Text("${food.ingredients}"),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: Text(
+              'Ingredients',
+              style: TextStyle(fontSize: 30, color: Colors.deepOrange),
+            ),
+          ),
           Expanded(
-              child: ListView.builder(
-                  itemCount: food.ingredients.length,
-                  itemBuilder: (context, index) {
-                    String ingredients = this.food.ingredients[index];
-                    return ListTile(
-                      leading: Text('$index'),
-                      title: Text(
-                        ingredients,
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    );
-                  })
-          )
+              child: food.ingredients != null
+                  ? ListView.builder(
+                      itemCount: food.ingredients.length,
+                      itemBuilder: (context, index) {
+                        String ingredients = this.food.ingredients[index];
+                        return ListTile(
+                          leading: CircleAvatar(
+                            child: Text('#${index + 1}'),
+                          ),
+                          title: Text(
+                            ingredients,
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        );
+                      })
+                  : Text(
+                      'No ingredients for ${food.name}',
+                      style: TextStyle(fontSize: 20, color: Colors.red),
+                    ))
         ],
       ),
     );
