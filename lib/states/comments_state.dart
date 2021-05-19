@@ -22,7 +22,6 @@ class CommentStateSuccess extends CommentState {
   String toString() => "comments : $comments, hasReachedEnd: $hasReachedEnd";
 
   @override
-  // TODO: implement props
   List<Object> get props => [comments, hasReachedEnd];
 
   CommentStateSuccess cloneWith({List<Comment> comments, bool hasReachedEnd}) {

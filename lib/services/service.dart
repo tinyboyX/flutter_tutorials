@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_tutorials/models/comment.dart';
 import 'package:http/http.dart' as http;
 
+
 Future<List<Comment>> getCommentsFromApi(int start, int limit) async {
   final url = "https://jsonplaceholder.typicode.com/comments?_start=$start&_limit=$limit";
   final http.Client httpClient = http.Client();
@@ -23,11 +24,11 @@ Future<List<Comment>> getCommentsFromApi(int start, int limit) async {
       print('start = $start, limit = $limit');
       return comments;
     } else {
-      return List<Comment>.filled(0, null);
+      return List<Comment>();
     }
   } catch(exception) {
     print('Exception sending api : '+exception.toString());
-    return List<Comment>.filled(0, null);
+    return List<Comment>();
   }
 
 }

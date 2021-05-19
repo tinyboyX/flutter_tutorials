@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tutorials/blocs/comments_bloc.dart';
+import 'package:flutter_tutorials/events/comment_event.dart';
 import 'package:flutter_tutorials/ui/infinite_list.dart';
 
 void main() {
@@ -14,9 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         home: BlocProvider(
-          create: (context) => CommentBloc(),
+          create: (context) => CommentBloc()..add(CommentFetchEvent()),
           child: InfiniteList(),
-        )
-    );
+        ));
   }
 }
