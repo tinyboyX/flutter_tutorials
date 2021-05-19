@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tutorials/blocs/comments_bloc.dart';
+import 'package:flutter_tutorials/ui/infinite_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,9 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
-      home: Center(
-        child: Text("Test"),
-      ),
+        home: BlocProvider(
+          create: (context) => CommentBloc(),
+          child: InfiniteList(),
+        )
     );
   }
 }
