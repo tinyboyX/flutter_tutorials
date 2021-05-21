@@ -5,7 +5,7 @@ import 'package:flutter_tutorials/Blocs/AuthenBLoc.dart';
 import 'package:flutter_tutorials/Blocs/LoginBloc.dart';
 import 'package:flutter_tutorials/Events/AuthenticationEvent.dart';
 import 'package:flutter_tutorials/States/AuthenState.dart';
-import 'package:flutter_tutorials/repositories/user_repo.dart';
+import 'package:flutter_tutorials/data/users.dart';
 import 'package:flutter_tutorials/ui/HomePage.dart';
 import 'package:flutter_tutorials/ui/LoginPage.dart';
 import 'package:flutter_tutorials/ui/SplashPage.dart';
@@ -26,17 +26,26 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Login with Firebase',
         home: BlocProvider(
-          create: (context) => AuthenticationBloc(userRepository: _userRepository)..add(AuthenticationEventStart()),
-          child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+          create: (context) =>
+          AuthenticationBloc(userRepository: _userRepository)
+            ..add(AuthenticationEventStart()),
+          child: BlocConsumer<AuthenticationBloc, AuthenticationState>(
             builder: (context, authenticationState) {
               if (authenticationState is AuthenticationStateSuccess) {
                 return HomePage();
               } else if (authenticationState is AuthenticationStateFailure) {
                 return BlocProvider<LoginBloc>(
                     create: (context) => LoginBloc(userRepository: _userRepository), child: LoginPage(userRepository: _userRepository) //LoginPage,
-                    );
+                );
               } else {
                 return SplashPage();
+              }
+            },
+            listener: (context, authenticationState) {
+              if (authenticationState is AuthenticationStateSuccess) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Success'),duration: Duration(milliseconds: 100),)
+                );
               }
             },
           ),

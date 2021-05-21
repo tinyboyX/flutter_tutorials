@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tutorials/Events/LoginEvent.dart';
 import 'package:flutter_tutorials/States/LoginState.dart';
-import 'package:flutter_tutorials/repositories/user_repo.dart';
+import 'package:flutter_tutorials/data/users.dart';
 import 'package:flutter_tutorials/validations/validatros.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';

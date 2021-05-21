@@ -7,7 +7,7 @@ import 'package:flutter_tutorials/Blocs/RegisterBloc.dart';
 import 'package:flutter_tutorials/Events/AuthenticationEvent.dart';
 import 'package:flutter_tutorials/Events/RegisterEvent.dart';
 import 'package:flutter_tutorials/States/RegisterState.dart';
-import 'package:flutter_tutorials/repositories/user_repo.dart';
+import 'package:flutter_tutorials/data/users.dart';
 
 import 'Buttons/register_button.dart';
 

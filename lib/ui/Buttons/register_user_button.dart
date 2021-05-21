@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tutorials/Blocs/RegisterBloc.dart';
-import 'package:flutter_tutorials/repositories/user_repo.dart';
+import 'package:flutter_tutorials/data/users.dart';
 
 import '../RegisterPage.dart';
 

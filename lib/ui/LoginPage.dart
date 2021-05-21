@@ -7,7 +7,7 @@ import 'package:flutter_tutorials/Blocs/LoginBloc.dart';
 import 'package:flutter_tutorials/Events/AuthenticationEvent.dart';
 import 'package:flutter_tutorials/Events/LoginEvent.dart';
 import 'package:flutter_tutorials/States/LoginState.dart';
-import 'package:flutter_tutorials/repositories/user_repo.dart';
+import 'package:flutter_tutorials/data/users.dart';
 import 'package:flutter_tutorials/ui/Buttons/login_buttons.dart';
 import 'package:flutter_tutorials/ui/Buttons/login_google_buttons.dart';
 import 'package:flutter_tutorials/ui/Buttons/register_user_button.dart';

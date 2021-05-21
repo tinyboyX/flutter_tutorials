@@ -32,6 +32,7 @@ dependencies:
   meta: ^1.3.0
   rxdart: ^0.27.0
   font_awesome_flutter: ^9.0.0
+  flutter_facebook_login: any
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
